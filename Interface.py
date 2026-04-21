@@ -14,11 +14,20 @@ def acao_converter(event=None):
           label_resultado.config(text="Entrada inválida!")
 
 janela = tk.Tk()
-janela.title("Conversor Decimal para Binário")
+janela.title("Conversor Binário/Decimal")
 janela.geometry("600x400")
 
-label_instrucao = tk.Label(janela, text="Digite o número decimal: ")
+label_instrucao = tk.Label(janela, text="Digite o número: ")
 label_instrucao.pack()
+
+selecao = tk.IntVar()
+selecao.set(1)
+botao_selecao_bin = tk.Radiobutton(janela, text="Decimal para Binário", variable=selecao, value=1)
+botao_selecao_bin.pack()
+botao_selecao_dec = tk.Radiobutton(janela, text="Binário para Decimal", variable=selecao, value=2)
+botao_selecao_dec.pack()
+
+
 
 entrada_numero = tk.Entry(janela)
 entrada_numero.pack()
