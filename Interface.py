@@ -1,16 +1,22 @@
 import tkinter as tk
 from logging import config
 from tkinter import Entry
-from main import decimal_para_binario
+from main import decimal_para_binario, binario_para_decimal
+
 
 def acao_converter(event=None):
-      try:
-        numero = int(entrada_numero.get())
+    escolha = selecao.get()
+    entrada = entrada_numero.get()
 
-        resultado_binario = decimal_para_binario(numero)
-
-        label_resultado.config(text="Binário: " + resultado_binario)
-      except ValueError:
+    try:
+        if escolha == 1:
+            numero = int(entrada)
+            resultado = decimal_para_binario(numero)
+            label_resultado.config(text="Binário: " + resultado)
+        elif escolha == 2:
+            resultado = binario_para_decimal(entrada)
+            label_resultado.config(text="Decimal: " + resultado)
+    except ValueError:
           label_resultado.config(text="Entrada inválida!")
 
 janela = tk.Tk()
@@ -26,6 +32,7 @@ botao_selecao_bin = tk.Radiobutton(janela, text="Decimal para Binário", variabl
 botao_selecao_bin.pack()
 botao_selecao_dec = tk.Radiobutton(janela, text="Binário para Decimal", variable=selecao, value=2)
 botao_selecao_dec.pack()
+
 
 
 
