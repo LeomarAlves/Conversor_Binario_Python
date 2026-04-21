@@ -1,13 +1,16 @@
-def decimal_para_binario(numero):
-    if numero == 0:
+from tokenize import String
+
+
+def decimal_para_binario(decimal):
+    if decimal == 0:
         return 0
 
     pilha_bits = []
 
-    while numero > 0:
-        resto = numero % 2
+    while decimal > 0:
+        resto = decimal % 2
         pilha_bits.append(resto)
-        numero = numero // 2
+        decimal = decimal // 2
 
     resultado = ""
     while len(pilha_bits) > 0:
@@ -15,4 +18,15 @@ def decimal_para_binario(numero):
         resultado = resultado + str(bit)
 
     return resultado
+
+def binario_para_decimal(binario):
+    decimal = 0
+    binario_invertido = binario[::-1]
+
+    for posicao in range(len(binario_invertido)):
+        bit = int(binario_invertido[posicao])
+        valor_bit = bit * (2 ** posicao)
+        decimal += valor_bit
+
+    return str(decimal)
 
