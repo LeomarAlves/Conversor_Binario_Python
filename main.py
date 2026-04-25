@@ -30,3 +30,50 @@ def binario_para_decimal(binario):
 
     return str(decimal)
 
+def decimal_para_hexadecimal(decimal):
+    if decimal == 0:
+        return "0"
+
+    pilha_hex = []
+    mapa_hex = {10: "A", 11: "B", 12:"C", 13:"D", 14:"E", 15:"F"}
+
+    while decimal > 0:
+        resto = decimal % 16
+
+        if resto >=10:
+            caractere = mapa_hex[resto]
+        else:
+            caractere = str(resto)
+
+        pilha_hex.append(caractere)
+        decimal = decimal // 16
+
+    resultado = ""
+    while len(pilha_hex) > 0:
+        resultado = resultado + pilha_hex.pop()
+
+    return resultado
+
+def hexadecimal_para_decimal(hexadecimal):
+    decimal = 0
+    texto_invertido = hexadecimal[::-1]
+    mapa_dec = {"A": 10, "B": 11, "C": 12, "D": 13, "E": 14, "F": 15}
+
+    for posicao in range(len(texto_invertido)):
+        caractere = texto_invertido[posicao].upper()
+
+        if caractere in mapa_dec:
+            valor_digito = mapa_dec[caractere]
+        else:
+            valor_digito = int(caractere)
+
+        valor_posicao =  valor_digito * (16 ** posicao)
+        decimal += valor_posicao
+
+    return str(decimal)
+
+
+
+
+
+
